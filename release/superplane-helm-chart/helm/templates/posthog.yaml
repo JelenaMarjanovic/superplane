@@ -8,6 +8,6 @@ type: Opaque
 data:
 {{ if .Values.posthog.enabled }}
   {{ $key := .Values.posthog.key | required ".Values.posthog.key is required." -}}
-  POSTHOG_KEY: {{ $key }}
+  POSTHOG_KEY: {{ $key | b64enc }}
 {{- end }}
 {{- end }}
